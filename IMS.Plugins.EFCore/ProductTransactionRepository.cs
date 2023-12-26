@@ -78,13 +78,15 @@ namespace IMS.Plugins.EFCore
         public async Task<IEnumerable<ProductTransaction>> GetProductTransactionAsync(string productName, DateTime? dateFrom, DateTime? dateTo, ProductTransactionType? transactionType)
         {
             if (dateTo.HasValue) dateTo = dateTo.Value.AddDays(1);
+
             var query = from pt in db.ProductTransactions
                         join prod in db.Product on pt.ProductId equals prod.ProductId
-                        where (string.IsNullOrEmpty(productName) || prod.ProductName.Contains(productName, StringComparison.OrdinalIgnoreCase)) &&
+                        where (string.IsNullOrWhiteSpace(productName) || prod.ProductName.ToLower().IndexOf(productName.ToLower()) >= 0) &&
                         (!dateFrom.HasValue || pt.TransactionDate >= dateFrom.Value.Date) &&
                         (!dateTo.HasValue || pt.TransactionDate <= dateTo.Value.Date) &&
                         (!transactionType.HasValue || pt.ActivityType == transactionType)
                         select pt;
+
             return await query.Include(x => x.Product).ToListAsync();
         }
     }

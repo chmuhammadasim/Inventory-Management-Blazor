@@ -12,9 +12,7 @@ namespace IMS.Plugins.EFCore
             this.db = _db;
         }
 
-
-        public async Task<IEnumerable<InventoryTransaction>> GetInventoryTransactionAsync(
-            string inventoryName, DateTime? dateFrom, DateTime? dateTo, InventoryTransactionType? transactionType)
+        public async Task<IEnumerable<InventoryTransaction>> GetInventoryTransactionAsync(string inventoryName, DateTime? dateFrom, DateTime? dateTo, InventoryTransactionType? transactionType)
         {
             if (dateTo.HasValue) dateTo = dateTo.Value.AddDays(1);
 
@@ -28,7 +26,6 @@ namespace IMS.Plugins.EFCore
 
             return await query.Include(x => x.Inventory).ToListAsync();
         }
-
 
         public async Task PurchaseAsync(string poNumber, Inventory inventory, int quantity, double price, string doneBy)
         {

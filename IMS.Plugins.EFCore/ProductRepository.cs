@@ -38,22 +38,22 @@ namespace IMS.Plugins.EFCore
         {
             return await db.Product.Include(x => x.ProductInventories).ThenInclude(x => x.Inventory).FirstOrDefaultAsync(x => x.ProductId == productId);
         }
+
         public async Task<List<Product>> GetProductsByNameAsync(string name)
         {
-            var data = await db.Product.Where(check => (check.ProductName.ToLower().Contains(name.ToLower()) || string.IsNullOrWhiteSpace(name)) && check.IsActive == true).ToListAsync();
-            return data;
+            return await this.db.Product.Where(x => (x.ProductName.ToLower().IndexOf(name.ToLower()) >= 0 || string.IsNullOrWhiteSpace(name)) && x.IsActive == true).ToListAsync();
         }
 
         public async Task UpdateProductAsync(Product product)
         {
             if (db.Product.Any(x => x.ProductName.ToLower() == product.ProductName.ToLower())) return;
-            var prod = await  db.Product.FindAsync( product.ProductId);
 
-            if (prod != null) 
+            var prod = await db.Product.FindAsync(product.ProductId);
+            if (prod != null)
             {
                 prod.ProductName = product.ProductName;
-                prod.Quantity = product.Quantity;
                 prod.Price = product.Price;
+                prod.Quantity = product.Quantity;
                 prod.ProductInventories = product.ProductInventories;
 
                 await db.SaveChangesAsync();

@@ -13,3 +13,5 @@ C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCo
 C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\refint\IMS.Plugins.EFCore.dll
 C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.pdb
 C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\ref\IMS.Plugins.EFCore.dll
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\bin\Debug\net6.0\IMS.Plugins.EFCore.runtimeconfig.json
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.genruntimeconfig.cache

@@ -1,4 +1,5 @@
 ﻿@page "/productreport"
+
 @using IMS.UserCases.Reports
 @inject IJSRuntime JSRuntime
 @inject ISearchProductTransactionUseCase searchProductTransactionUseCase
@@ -51,10 +52,10 @@
         <label></label>
         <button type="button" class="btn btn-primary form-control" @onclick="SearchProducts" >Search</button>
     </div>
-    <div class="col">
-        <label></label>
-        <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Report</button>
-    </div>
+        <div class="col">
+            <label></label>
+            <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Report</button>
+        </div>
 </div>
 @if (productTransaction != null)
 {

@@ -1,0 +1,41 @@
+﻿@page "/addinventory"
+@inject IAddInventoryUseCase AddInventoryUseCase
+@inject NavigationManager NavigationManager
+
+<h3>Add Inventory</h3>
+@if (inventory != null)
+{
+    <EditForm Model="inventory" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div class="col-md-4 mb-3">
+            <label for="name">Add Inventory</label>
+            <InputText @bind-Value="inventory.InventoryName" type="text" class="form-control " id="name" placeholder="Inventory Name" required />
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="Quantity">Add Quantity</label>
+            <InputNumber @bind-Value="inventory.Quantity" type="number" class="form-control " id="Quantity" placeholder="Inventory Quantity" required />
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="price">Add Price</label>
+            <InputNumber @bind-Value="inventory.Price" type="number" class="form-control " id="price" placeholder="Inventory Price" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </EditForm>
+}
+@code {
+    private Inventory? inventory;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        inventory = new Inventory();
+    }
+    public async Task OnValidSubmit()
+    {
+        if (this.inventory != null)
+        {
+            await AddInventoryUseCase.ExecuteAsync(this.inventory);
+            NavigationManager.NavigateTo("/inventories");
+        }
+    }
+}

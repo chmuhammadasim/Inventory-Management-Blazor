@@ -1,0 +1,60 @@
+﻿@using IMS.CoreBusines
+@inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
+<div class="input-group ">
+    <input class="form-control form-control-lg" type="text" placeholder="Type Inventory Name To Search " @bind-value="inventoryNameToSearch" @bind-value:event="oninput" />
+    <button class="input-group-text btn-success" type="button" @onclick="@(async()=> { await ViewInventories(); } )">View</button>
+</div>
+<br />
+
+@if (this.DisplaySearchResult  && _inventories != null && selectedInventory == null)
+{
+    <div style="overflow-y:auto;max-height:300px">
+        <ul style="list-style-type:none">
+            @foreach(var inventory in _inventories)
+            {
+                <li @key="inventory.InventoryId" style="cursor:pointer" @onclick="@(async()=> { await SelectInventory(inventory); })">@inventory.InventoryName</li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    private string? _inventoryNameToSearch 
+    {
+        get => inventoryNameToSearch;
+        set
+        {
+            inventoryNameToSearch = value;
+            if (!string.IsNullOrWhiteSpace(inventoryNameToSearch) && inventoryNameToSearch.Length > 2)
+            {
+                ViewInventories();
+            }
+        }
+    }
+    private string? inventoryNameToSearch;
+    private List<Inventory>? _inventories;
+    private Inventory? selectedInventory;
+
+    [Parameter]
+    public EventCallback<List<Inventory>> OnSearchInventories { get; set; }
+
+    [Parameter]
+    public bool DisplaySearchResult { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<Inventory> OnSelectInventory { get; set; }
+
+    private async Task ViewInventories()
+    {
+        var inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync(inventoryNameToSearch??string.Empty))?.ToList();
+        await OnSearchInventories.InvokeAsync(inventories);
+        _inventories = inventories;
+        this.selectedInventory = null;
+        StateHasChanged();
+    }
+    private async Task SelectInventory(Inventory inventory)
+    {
+        await OnSelectInventory.InvokeAsync(inventory);
+        selectedInventory = inventory;
+    }
+}

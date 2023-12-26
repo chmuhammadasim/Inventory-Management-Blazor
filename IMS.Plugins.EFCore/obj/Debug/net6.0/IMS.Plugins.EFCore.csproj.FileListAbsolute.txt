@@ -1,0 +1,15 @@
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\bin\Debug\net6.0\IMS.Plugins.EFCore.deps.json
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\bin\Debug\net6.0\IMS.Plugins.EFCore.dll
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\bin\Debug\net6.0\IMS.Plugins.EFCore.pdb
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\bin\Debug\net6.0\IMS.CoreBusines.dll
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\bin\Debug\net6.0\IMS.CoreBusines.pdb
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.csproj.AssemblyReference.cache
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.AssemblyInfoInputs.cache
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.AssemblyInfo.cs
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.csproj.CoreCompileInputs.cache
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.csproj.CopyComplete
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.dll
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\refint\IMS.Plugins.EFCore.dll
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\IMS.Plugins.EFCore.pdb
+C:\Users\boybr\source\repos\IMS.Plugins.EFCore\obj\Debug\net6.0\ref\IMS.Plugins.EFCore.dll

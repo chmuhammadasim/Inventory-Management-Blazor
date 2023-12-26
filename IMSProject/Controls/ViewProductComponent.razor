@@ -1,0 +1,58 @@
+﻿@using IMS.CoreBusines
+@inject IViewProductsByNameUseCase ViewProductsByNameUseCase
+
+<div class="input-group mb-3">
+    <input class="form-control form-control-lg" placeholder="Type Product Name To Search " @bind-value="ProductNameToSearch" @bind-value:event="oninput" />
+    <button class="input-group-text btn-success" type="button" @onclick="@(async()=> { await ViewProduct(); } )">View</button>
+</div>
+<br />
+@if (this.DisplaySearchResult && _products != null && selectedProduct == null)
+{
+    <div style="overflow-y:auto;max-height:300px">
+        <ul style="list-style-type:none">
+            @foreach (var Product in _products)
+            {
+                <li @key="Product.ProductId" style="cursor:pointer" @onclick="@(async()=> { await SelectProduct(Product); })">@Product.ProductName</li>
+            }
+        </ul>
+    </div>
+}
+@code {
+    private List<Product>? _products;
+    private Product? selectedProduct;
+    private string _ProductNameToSearch;
+    private string ProductNameToSearch
+    {
+        get => _ProductNameToSearch;
+        set
+        {
+            _ProductNameToSearch = value;
+            if (!string.IsNullOrWhiteSpace(_ProductNameToSearch) && _ProductNameToSearch.Length >2)
+            {
+                ViewProduct();
+            }
+        }
+    }
+    [Parameter]
+    public bool DisplaySearchResult { get; set; } = false;
+    private List<Product>? products;
+    [Parameter]
+    public EventCallback<List<Product>> OnSearchProducts { get; set; }
+    [Parameter]
+    public EventCallback<Product> OnSelectProducts { get; set; }
+    private async Task ViewProduct()
+    {
+
+        products = (await ViewProductsByNameUseCase.ExecuteAsync(ProductNameToSearch ?? string.Empty))?.ToList();
+        await OnSearchProducts.InvokeAsync(products);
+        _products = products;
+        this.selectedProduct = null;
+        StateHasChanged();
+    }
+    private async Task SelectProduct(Product product)
+    {
+        await OnSelectProducts.InvokeAsync(product);
+        selectedProduct = product;
+    }
+
+}

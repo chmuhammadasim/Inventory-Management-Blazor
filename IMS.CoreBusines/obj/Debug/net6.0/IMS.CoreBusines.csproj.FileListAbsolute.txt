@@ -1,0 +1,11 @@
+C:\Users\boybr\source\repos\IMS.CoreBusines\bin\Debug\net6.0\IMS.CoreBusines.deps.json
+C:\Users\boybr\source\repos\IMS.CoreBusines\bin\Debug\net6.0\IMS.CoreBusines.dll
+C:\Users\boybr\source\repos\IMS.CoreBusines\bin\Debug\net6.0\IMS.CoreBusines.pdb
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\IMS.CoreBusines.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\IMS.CoreBusines.AssemblyInfoInputs.cache
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\IMS.CoreBusines.AssemblyInfo.cs
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\IMS.CoreBusines.csproj.CoreCompileInputs.cache
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\IMS.CoreBusines.dll
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\refint\IMS.CoreBusines.dll
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\IMS.CoreBusines.pdb
+C:\Users\boybr\source\repos\IMS.CoreBusines\obj\Debug\net6.0\ref\IMS.CoreBusines.dll

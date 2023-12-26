@@ -1,0 +1,24 @@
+﻿@inject NavigationManager navigationManager
+@inject IDeleteProductUseCase DeleteProductUseCase
+<tr>
+    <td>@product.ProductName</td>
+    <td>@product.Quantity</td>
+    <td>@product.Price</td>
+    <td><button type="button" class="btn btn-light" @onclick="@(()=>EditProductData(product.ProductId))">Edit</button></td>
+    <td><button type="button" class="btn btn-Warning" @onclick="@(async ()=>await DeleteProductData(product))">Delete</button></td>
+</tr>
+@code {
+    [Parameter]
+    public Product? product { get; set; }
+    [Parameter]
+    public EventCallback OnProductDeleted { get; set; }
+    private void EditProductData(int invId)
+    {
+        navigationManager.NavigateTo($"/productedit/{invId}");
+    }
+    private async Task DeleteProductData(Product product)
+    {
+        await DeleteProductUseCase.ExecuteAsync(product.ProductId);
+        await OnProductDeleted.InvokeAsync();
+    }
+}

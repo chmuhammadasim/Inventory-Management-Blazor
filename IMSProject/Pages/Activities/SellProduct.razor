@@ -1,0 +1,55 @@
+﻿@page "/sellproduct"
+@inject ISellProductUseCase sellProductUseCase
+<ErrorMessageComponent ErrorMessage="@errorMessage"></ErrorMessageComponent>
+<h3>SellProduct</h3>
+
+@if (sellViewModel != null)
+{
+    <EditForm Model="sellViewModel" OnInvalidSubmit="OnInvalidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <div class="col-md-4 mb-3">
+            <label for="po">Production Number</label>
+            <InputText @bind-Value="sellViewModel.SalesNumber" type="text" class="form-control " id="po" placeholder="Produce Order" required />
+        </div>
+        <div>
+            <label for="inv">Product to Produce</label>
+            <ViewProductComponent OnSelectProducts="OnSelectProduct" DisplaySearchResult="true"></ViewProductComponent>
+            <InputText id="inv" class="form-control" @bind-Value="sellViewModel.ProductName" disabled></InputText>
+            <input type="hidden" value="@sellViewModel.ProductId" />
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="qyt">price</label>
+            <InputNumber @bind-Value="sellViewModel.ProductionPrice" class="form-control " id="qyt" placeholder="Quantity To Produce" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+
+    </EditForm>
+}
+@code {
+    private SellViewModel sellViewModel = new SellViewModel();
+    private Product selectedProduct;
+    private string errorMessage; 
+    private void OnInvalidSubmit()
+    {
+        if(this.selectedProduct.Quantity < this.sellViewModel.QuantityToSell)
+        {
+            errorMessage = "The Quantity of the product is not Enough";
+        }
+        else
+        {
+            errorMessage = string.Empty;
+        }
+        sellProductUseCase.ExecteAsync(this.sellViewModel.SalesNumber, this.selectedProduct, this.sellViewModel.QuantityToSell, "asim");
+        this.sellViewModel = new SellViewModel();
+        this.selectedProduct = null;
+        this.errorMessage = string.Empty;
+    }
+    private void OnSelectProduct(Product product)
+    {
+        this.selectedProduct = product;
+        sellViewModel.ProductId = product.ProductId;
+        sellViewModel.ProductName = product.ProductName;
+        sellViewModel.ProductionPrice = product.Price;
+    }
+}

@@ -1,0 +1,17 @@
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.UserCases.deps.json
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.UserCases.dll
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.UserCases.pdb
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.CoreBusines.dll
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.Plugins.EFCore.dll
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.Plugins.EFCore.pdb
+C:\Users\boybr\source\repos\IMS.UserCases\bin\Debug\net6.0\IMS.CoreBusines.pdb
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.csproj.AssemblyReference.cache
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.AssemblyInfoInputs.cache
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.AssemblyInfo.cs
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.csproj.CoreCompileInputs.cache
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.csproj.CopyComplete
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.dll
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\refint\IMS.UserCases.dll
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\IMS.UserCases.pdb
+C:\Users\boybr\source\repos\IMS.UserCases\obj\Debug\net6.0\ref\IMS.UserCases.dll

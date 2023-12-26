@@ -1,0 +1,54 @@
+﻿<h3>ProductInventoriesComponent</h3>
+<div class="form-group">
+    <label>Inventories</label>
+    <ViewInventoriesComponent DisplaySearchResult="true" OnSelectInventory="OnSelectInventory"></ViewInventoriesComponent>
+</div>
+
+@if (ProductInventories != null && ProductInventories.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var proinv in this.ProductInventories)
+        {
+        <tbody>
+            <tr>
+                <td>@proinv.Inventory.InventoryName</td>
+                    <td><input type="number" min="0" @bind-value="proinv.InventoryQuantity" @bind-value:event="oninput" @onchange="OnInVentoryQtyChanged" /></td>
+                <td><Button class="btn btn-link" type="button" @onclick="@(()=>RemoveInventory(proinv))">Remove</Button></td>
+            </tr>
+        </tbody>
+        
+            
+        }
+    </table>
+}
+@code {
+    [Parameter]
+    public EventCallback<List<ProductInventory>> OnInventorySeleted { get; set; }
+    [Parameter]
+    public List<ProductInventory> ProductInventories { get; set; } = new List<ProductInventory>();
+
+    private async void OnSelectInventory(Inventory inventory)
+    {
+        if (!ProductInventories.Any(x => x.Inventory.InventoryName.Equals(inventory.InventoryName, StringComparison.OrdinalIgnoreCase)))
+        {
+            this.ProductInventories.Add(new ProductInventory { InventoryId = inventory.InventoryId, Inventory = inventory});
+        }
+        await OnInventorySeleted.InvokeAsync(this.ProductInventories);
+    }
+    private async Task OnInVentoryQtyChanged()
+    {
+        await OnInventorySeleted.InvokeAsync(this.ProductInventories);
+    }
+
+    private void RemoveInventory(ProductInventory productInventory)
+    {
+        this.ProductInventories.Remove(productInventory);
+    }
+}

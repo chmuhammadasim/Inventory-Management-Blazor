@@ -46,15 +46,15 @@ namespace IMS.Plugins.EFCore
 
         public async Task UpdateProductAsync(Product product)
         {
-            if(db.Product.Any(x => x.ProductName.Equals(product.ProductName,StringComparison.OrdinalIgnoreCase))) return;
-            var products = await  db.Product.FindAsync( product.ProductId);
+            if (db.Product.Any(x => x.ProductName.ToLower() == product.ProductName.ToLower())) return;
+            var prod = await  db.Product.FindAsync( product.ProductId);
 
-            if (products != null) 
+            if (prod != null) 
             {
-                products.ProductName = product.ProductName;
-                products.Quantity = product.Quantity;
-                products.Price = product.Price;
-                products.ProductInventories = product.ProductInventories;
+                prod.ProductName = product.ProductName;
+                prod.Quantity = product.Quantity;
+                prod.Price = product.Price;
+                prod.ProductInventories = product.ProductInventories;
 
                 await db.SaveChangesAsync();
             }

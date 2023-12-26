@@ -9,7 +9,7 @@
 
 @if (produceViewModel != null)
 {
-    <EditForm Model="produceViewModel" OnInvalidSubmit="OnInvalidSubmit">
+    <EditForm Model="produceViewModel" OnValidSubmit="OnValidSubmit">
         <DataAnnotationsValidator></DataAnnotationsValidator>
         <ValidationSummary></ValidationSummary>
         <div class="col-md-4 mb-3">
@@ -38,7 +38,7 @@
     private string errorMessage;
     private ProduceViewModel produceViewModel =new ProduceViewModel();
     private Product selectedProduct;
-    public async Task OnInvalidSubmit()
+    public async Task OnValidSubmit()
     {
         if (! await validateEnoughInventoriesForProductUseCase.ExecuteAsync(this.selectedProduct, this.produceViewModel.QuantityToProduce))
         {

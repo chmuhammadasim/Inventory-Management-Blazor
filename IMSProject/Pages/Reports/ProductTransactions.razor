@@ -1,0 +1,117 @@
+﻿@page "/productreport"
+@using IMS.UserCases.Reports
+@inject IJSRuntime JSRuntime
+@inject ISearchProductTransactionUseCase searchProductTransactionUseCase
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th, .table td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+</style>
+<h3>Product Transaction</h3>
+<br />
+<div id="printarea">
+<div class="row">
+    <div class="col">
+        <label for="inv">Product Name :</label>
+        <input type="text" id="inv" class="form-control" @bind-value="proName" />
+    </div>
+    <div class="col">
+        <label for="DFrom">Date From :</label>
+        <input type="date" id="DFrom" class="form-control" @bind-value="dateFrom" />
+    </div>
+    <div class="col">
+        <label for="DTo">Date To :</label>
+        <input type="date" id="DTo" class="form-control" @bind-value="dateTo" />
+    </div>
+    <div class="col">
+        <label for="at">Date To :</label>
+        <select id="at" class="form-control" @bind="activityTypeId">
+            <option value="0"></option>
+            <option value="1">Produce Product</option>
+            <option value="2">Sell Product</option>
+        </select>
+    </div>
+    <div class="col">
+        <label></label>
+        <button type="button" class="btn btn-primary form-control" @onclick="SearchProducts" >Search</button>
+    </div>
+    <div class="col">
+        <label></label>
+        <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Report</button>
+    </div>
+</div>
+@if (productTransaction != null)
+{
+    <table class="table">
+        <thead>
+            <tr>Date</tr>
+            <tr>Product</tr>
+            <tr>Activity</tr>
+            <tr>Quantity Before</tr>
+            <tr>Quantity After</tr>
+            <tr>Production #</tr>
+            <tr>SO #</tr>
+        </thead>
+        <tbody>
+            @foreach (var pt in productTransaction)
+            {
+                <tr>
+                    <td>@pt.TransactionDate.ToString("MM/dd/yyyy")</td>
+                    <td>@pt.Product.ProductName</td>
+                    <td>
+                        @if (pt.ActivityType == ProductTransactionType.ProduceProduct)
+                        {
+                            <text>Produce Product</text>
+                        }
+                        else if (pt.ActivityType == ProductTransactionType.SellProduct)
+                        {
+                            <text>Sell Product</text>
+                        }
+                    </td>
+                    <td>@pt.QuantityBefore</td>
+                    <td>@pt.QuantityAfter</td>
+                    <td>@pt.ProductionNumber</td>
+                    <td>@pt.SalesOrderNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div>
+@code {
+    private string proName;
+    private DateTime? dateFrom;
+    private DateTime? dateTo;
+    private int activityTypeId = 0;
+    private IEnumerable<ProductTransaction> productTransaction;
+
+    private async Task SearchProducts()
+    {
+        ProductTransactionType? productTransactionType = null;
+        if (activityTypeId != 0)
+        {
+            productTransactionType = (ProductTransactionType)activityTypeId;
+        }
+        productTransaction = await searchProductTransactionUseCase.ExecuteAsync(proName, dateFrom, dateTo, productTransactionType);
+    }
+    private void PrintReport()
+    {
+        JSRuntime.InvokeVoidAsync("print");
+    }
+}

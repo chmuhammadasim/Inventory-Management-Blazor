@@ -14,7 +14,7 @@ namespace IMS.CoreBusines.Validations
             var product = validationContext.ObjectInstance as Product;
             if(product != null)
             {
-                if(product.ValidatePrice())
+                if(!product.ValidatePrice())
                 {
                     return new ValidationResult($"The Product Price is less than the summary of it's inventories's price : {product.TotalInventoryCost()}", new[] {validationContext.MemberName});
                 }

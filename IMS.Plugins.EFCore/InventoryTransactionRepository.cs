@@ -12,30 +12,36 @@ namespace IMS.Plugins.EFCore
             this.db = _db;
         }
 
-        public async Task<IEnumerable<InventoryTransaction>> GetInventoryTransactionAsync(string inventoryName, DateTime? dateFrom, DateTime? dateTo, InventoryTransactionType? transactionType)
+
+        public async Task<IEnumerable<InventoryTransaction>> GetInventoryTransactionAsync(
+            string inventoryName, DateTime? dateFrom, DateTime? dateTo, InventoryTransactionType? transactionType)
         {
+            if (dateTo.HasValue) dateTo = dateTo.Value.AddDays(1);
+
             var query = from it in db.InventoryTransactions
                         join inv in db.Inventories on it.InventoryId equals inv.InventoryId
-                        where (string.IsNullOrEmpty(inventoryName) || inv.InventoryName.Contains(inventoryName, StringComparison.OrdinalIgnoreCase)) &&
-                        (!dateFrom.HasValue || it.TransactionData >= dateFrom) &&
-                        (!dateTo.HasValue || it.TransactionData >= dateTo) &&
-                        (!transactionType.HasValue || it.ActivityType >= transactionType)
+                        where (string.IsNullOrWhiteSpace(inventoryName) || inv.InventoryName.ToLower().IndexOf(inventoryName.ToLower()) >= 0) &&
+                        (!dateFrom.HasValue || it.TransactionDate >= dateFrom.Value.Date) &&
+                        (!dateTo.HasValue || it.TransactionDate <= dateTo.Value.Date) &&
+                        (!transactionType.HasValue || it.ActivityType == transactionType)
                         select it;
-            return await query.Include(x => x.Inventory).ToArrayAsync();
+
+            return await query.Include(x => x.Inventory).ToListAsync();
         }
 
-        public async Task PurchaseAsync(string poNumber, Inventory Inventory, int quantity, double price, string doneBy)
+
+        public async Task PurchaseAsync(string poNumber, Inventory inventory, int quantity, double price, string doneBy)
         {
             this.db.InventoryTransactions.Add(new InventoryTransaction
             {
                 PONumber = poNumber,
-                InventoryId = Inventory.InventoryId,
-                QuantityBefore = Inventory.Quantity,
+                InventoryId = inventory.InventoryId,
+                QuantityBefore = inventory.Quantity,
                 ActivityType = InventoryTransactionType.PurchaseInventory,
-                QuantityAfter = quantity + Inventory.Quantity,
-                TransactionData = DateTime.Now,
+                QuantityAfter = inventory.Quantity + quantity,
+                TransactionDate = DateTime.Now,
                 DoneBy = doneBy,
-                UnitPrice = price * quantity,
+                UnitPrice = price
             });
             await this.db.SaveChangesAsync();
         }

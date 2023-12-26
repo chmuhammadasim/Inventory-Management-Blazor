@@ -19,15 +19,17 @@ namespace IMS.CoreBusines
         public List<ProductInventory>? ProductInventories { get; set; }
         public double TotalInventoryCost()
         {
-            return this.ProductInventories.Sum(x => x.Inventory?.Price * x.InventoryQuantity ?? 0);
+            return ProductInventories.Sum(x => x.Inventory?.Price * x.InventoryQuantity ?? 0);
         }
+
         public bool ValidatePrice()
         {
             if (ProductInventories == null || ProductInventories.Count <= 0) return true;
 
-            if (Price < TotalInventoryCost()) return false;
+            if (this.TotalInventoryCost() > Price) return false;
 
             return true;
+
         }
     }
 }

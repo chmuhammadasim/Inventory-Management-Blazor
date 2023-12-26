@@ -6,14 +6,14 @@
 <br />
 @if (purchaseViewModel != null)
 {
-    <EditForm Model="purchaseViewModel" OnInvalidSubmit="OnInvalidSubmit">
+    <EditForm Model="purchaseViewModel" OnValidSubmit="OnValidSubmit">
         <DataAnnotationsValidator></DataAnnotationsValidator>
         <ValidationSummary></ValidationSummary>
         <div class="col-md-4 mb-3">
             <label for="po">Purchase Order</label>
-            <InputText @bind-Value="purchaseViewModel.PurchaseOrder" type="text" class="form-control " id="po" placeholder="Purchase Order" required />
+            <InputText @bind-Value="purchaseViewModel.PurchaseOrder" class="form-control " id="po" placeholder="Purchase Order" />
         </div>
-        <div>
+        <div class="form-group">
             <label for="inv">Inventory to Purchase</label>
             <ViewInventoriesComponent OnSelectInventory="OnSelectInventories" DisplaySearchResult="true"></ViewInventoriesComponent>
             <InputText id="inv" class="form-control" @bind-Value="purchaseViewModel.InventoryName" disabled></InputText>    
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-4 mb-3">
             <label for="qyt">Quantity</label>
-            <InputNumber @bind-Value="purchaseViewModel.QuantityToPurchase" class="form-control " id="qyt" placeholder="Quantity To Purchase" required />
+            <InputNumber @bind-Value="purchaseViewModel.QuantityToPurchase" class="form-control " id="qyt" placeholder="Quantity To Purchase" />
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
 
@@ -33,7 +33,6 @@
 }
 
 @code {
-    private string selectedModelName = string.Empty;
     private Inventory selectedInventory = null;
     private PurchaseViewModel purchaseViewModel = new PurchaseViewModel();
 
@@ -44,7 +43,7 @@
         purchaseViewModel.InventoryId = inventory.InventoryId;
         purchaseViewModel.InventoryName = inventory.InventoryName;
     }
-    public async Task OnInvalidSubmit()
+    public async Task OnValidSubmit()
     {
         await PurchaseInventoryUseCase.ExecteAsync(this.purchaseViewModel.PurchaseOrder, this.selectedInventory, this.purchaseViewModel.QuantityToPurchase,"asim");
         this.purchaseViewModel = new PurchaseViewModel();

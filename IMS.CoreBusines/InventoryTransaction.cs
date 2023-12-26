@@ -12,13 +12,13 @@ namespace IMS.CoreBusines
         public int InventoryId { get; set; }
         [Required]
         public int QuantityBefore { get; set; }
-        public string PONumber { get; set; }
-        public string ProductionNumber { get; set; }
+        public string? PONumber { get; set; }
+        public string? ProductionNumber { get; set; }
         public double UnitPrice { get; set; }
         [Required]
         public int QuantityAfter { get; set; }
         [Required]
-        public DateTime TransactionData { get; set; }
+        public DateTime TransactionDate { get; set; }
         [Required]
         public string DoneBy { get; set; }
         [Required]

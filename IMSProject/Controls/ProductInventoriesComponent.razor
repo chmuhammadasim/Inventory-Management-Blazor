@@ -20,7 +20,7 @@
             <tr>
                 <td>@proinv.Inventory.InventoryName</td>
                     <td><input type="number" min="0" @bind-value="proinv.InventoryQuantity" @bind-value:event="oninput" @onchange="OnInVentoryQtyChanged" /></td>
-                <td><Button class="btn btn-link" type="button" @onclick="@(()=>RemoveInventory(proinv))">Remove</Button></td>
+                <td><Button class="btn" type="button" @onclick="@(()=>RemoveInventory(proinv))">Remove</Button></td>
             </tr>
         </tbody>
         

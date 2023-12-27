@@ -6,7 +6,7 @@
 <ErrorMessageComponent ErrorMessage="@errorMessage"></ErrorMessageComponent>
 <h3>Produce Product</h3>
 <br />
-
+<div class="backCustom">
 @if (produceViewModel != null)
 {
     <EditForm Model="produceViewModel" OnValidSubmit="OnValidSubmit">
@@ -30,10 +30,11 @@
             <label for="qyt">Quantity</label>
             <InputNumber @bind-Value="produceViewModel.QuantityToProduce" class="form-control " id="qyt" placeholder="Quantity To Produce" required />
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn">Save</button>
 
     </EditForm>
 }
+</div>
 @code {
     private string errorMessage;
     private ProduceViewModel produceViewModel =new ProduceViewModel();

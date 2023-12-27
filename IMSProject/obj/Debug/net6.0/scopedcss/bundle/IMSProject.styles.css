@@ -10,7 +10,9 @@ main[b-23pb4mbawv] {
 }
 
 .sidebar[b-23pb4mbawv] {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 100%, #3a0647 70%);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #cacaca, #f0f0f0);
 }
 
 .top-row[b-23pb4mbawv] {
@@ -104,7 +106,7 @@ main[b-23pb4mbawv] {
     }
 
     .nav-item[b-8mcho030xi]  a {
-        color: #d7d7d7;
+        color: black;
         border-radius: 4px;
         height: 3rem;
         display: flex;
@@ -114,12 +116,12 @@ main[b-23pb4mbawv] {
 
 .nav-item[b-8mcho030xi]  a.active {
     background-color: rgba(255,255,255,0.25);
-    color: white;
+    color: black;
 }
 
 .nav-item[b-8mcho030xi]  a:hover {
     background-color: rgba(255,255,255,0.1);
-    color: white;
+    color: black;
 }
 
 @media (min-width: 641px) {

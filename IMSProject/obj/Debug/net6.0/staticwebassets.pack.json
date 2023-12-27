@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\IMSProject.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\boybr\\source\\repos\\IMSProject\\wwwroot\\bg.jpg",
+      "PackagePath": "staticwebassets\\bg.jpg"
+    },
+    {
       "Id": "C:\\Users\\boybr\\source\\repos\\IMSProject\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },

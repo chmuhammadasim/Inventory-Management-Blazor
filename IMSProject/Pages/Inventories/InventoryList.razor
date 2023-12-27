@@ -2,20 +2,23 @@
 @attribute [Authorize]
 @inject NavigationManager navigationManager
 @inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
-<h3>Inventory List</h3>
-<br />
-<ViewInventoriesComponent OnSearchInventories="OnSearchInventories"></ViewInventoriesComponent>
+<div class="backCustom2">
+    <h3>Inventory List</h3>
+</div>
+    <br />
+    <ViewInventoriesComponent OnSearchInventories="OnSearchInventories"></ViewInventoriesComponent>
+
+
 @if (listInventories != null)
 {
     <table class="table">
-        <thead>
+        <thead class="">
             <th>Name</th>
             <th>Quantity</th>
             <th>Price</th>
             <th>Edit</th>
-            <th>Delete</th>
         </thead>
-        <tbody>
+        <tbody class="">
             @foreach(var inventory in listInventories)
             {
                 <InventoryItemComponent inventory="inventory"></InventoryItemComponent>
@@ -25,7 +28,7 @@
 }
 
 <br />
-<button type="button" class="btn btn-primary" @onclick="AddInventory">Add Inventory</button>
+<button type="button" class="btn" @onclick="AddInventory">Add</button>
 @code {
     private List<Inventory>? listInventories;
 

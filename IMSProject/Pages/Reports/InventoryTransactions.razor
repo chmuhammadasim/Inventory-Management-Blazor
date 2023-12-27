@@ -3,27 +3,7 @@
 @using IMS.UserCases.Reports
 @inject IJSRuntime JSRuntime
 @inject ISearchInventoryTransactionUseCase searchInventoryTransactionUseCase
-<style>
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
 
-        .table th, .table td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        .table th {
-            background-color: #f2f2f2;
-        }
-
-        .table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-</style>
 <h3>InventoryTransaction</h3>
 <br />
 <div id="printarea">
@@ -50,11 +30,11 @@
     </div>
     <div class="col">
         <label></label>
-        <button type="button" class="btn btn-primary form-control" @onclick="SearchInventories" >Search</button>
+        <button type="button" class="btn form-control" @onclick="SearchInventories" >Search</button>
     </div>
     <div class="col">
         <label></label>
-        <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Report</button>
+        <button type="button" class="btn form-control" @onclick="PrintReport">Report</button>
     </div>
 </div>
 @if (inventoryTransactions != null)
@@ -62,13 +42,13 @@
 
         <table class="table">
             <thead>
-                <tr>Date</tr>
-                <tr>Inventory</tr>
-                <tr>Activity</tr>
-                <tr>Quantity Before</tr>
-                <tr>Quantity After</tr>
-                <tr>PO #</tr>
-                <tr>Production #</tr>
+                <th>Date</th>
+                <th>Inventory</th>
+                <th>Activity</th>
+                <th>Quantity Before</th>
+                <th>Quantity After</th>
+                <th>PO #</th>
+                <th>Producthion #</th>
             </thead>
             <tbody>
                 @foreach (var it in inventoryTransactions)

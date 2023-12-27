@@ -2,20 +2,24 @@
 @attribute [Authorize]
 @inject NavigationManager NavigationManager
 @inject IViewProductsByNameUseCase ViewProductsByNameUseCase
-<h3>ProductList</h3>
+<div class="backCustom2">
+    <h3>Product List</h3>
+</div>
+
 <br />
 <ViewProductComponent OnSearchProducts="OnSearchProducts"></ViewProductComponent>
 
 @if (listProducts != null)
 {
     <table class="table">
-        <thead>
+        <thead class="glass">
         <th>Name</th>
         <th>Quantity</th>
         <th>Price</th>
         <th>Edit</th>
+        <th>Delete</th>
         </thead>
-        <tbody>
+        <tbody class="glass ">
             @foreach (var pro in this.listProducts)
             {
                 <ProductItemComponent product="pro" OnProductDeleted="DeleteProduct"></ProductItemComponent>
@@ -25,7 +29,7 @@
     <br />
     
 }
-<button type="button" class="btn btn-primary" @onclick="AddProduct">Add Product</button>
+<button type="button" class="btn" @onclick="AddProduct">Add</button>
 @code {
     private List<Product>? listProducts ;
 

@@ -4,33 +4,35 @@
 @using IMSProject.ViewModels
 <h3>Purchase Inventory</h3>
 <br />
-@if (purchaseViewModel != null)
-{
-    <EditForm Model="purchaseViewModel" OnValidSubmit="OnValidSubmit">
-        <DataAnnotationsValidator></DataAnnotationsValidator>
-        <ValidationSummary></ValidationSummary>
-        <div class="col-md-4 mb-3">
-            <label for="po">Purchase Order</label>
-            <InputText @bind-Value="purchaseViewModel.PurchaseOrder" class="form-control " id="po" placeholder="Purchase Order" />
-        </div>
-        <div class="form-group">
-            <label for="inv">Inventory to Purchase</label>
-            <ViewInventoriesComponent OnSelectInventory="OnSelectInventories" DisplaySearchResult="true"></ViewInventoriesComponent>
-            <InputText id="inv" class="form-control" @bind-Value="purchaseViewModel.InventoryName" disabled></InputText>    
-            <input type="hidden" value="@purchaseViewModel.InventoryId" />
-            @if (selectedInventory != null)
-            {
-                <text>Price: </text> @selectedInventory.Price.ToString("c")
-            }
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="qyt">Quantity</label>
-            <InputNumber @bind-Value="purchaseViewModel.QuantityToPurchase" class="form-control " id="qyt" placeholder="Quantity To Purchase" />
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+<div class="backCustom">
+    @if (purchaseViewModel != null)
+    {
+        <EditForm Model="purchaseViewModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <div class="col-md-4 mb-3">
+                <label for="po">Purchase Order</label>
+                <InputText @bind-Value="purchaseViewModel.PurchaseOrder" class="form-control " id="po" placeholder="Purchase Order" />
+            </div>
+            <div class="form-group">
+                <label for="inv">Inventory to Purchase</label>
+                <ViewInventoriesComponent OnSelectInventory="OnSelectInventories" DisplaySearchResult="true"></ViewInventoriesComponent>
+                <InputText id="inv" class="form-control" @bind-Value="purchaseViewModel.InventoryName" disabled></InputText>
+                <input type="hidden" value="@purchaseViewModel.InventoryId" />
+                @if (selectedInventory != null)
+                {
+                    <text>Price: </text> @selectedInventory.Price.ToString("c")
+                }
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="qyt">Quantity</label>
+                <InputNumber @bind-Value="purchaseViewModel.QuantityToPurchase" class="form-control " id="qyt" placeholder="Quantity To Purchase" />
+            </div>
+            <button type="submit" class="btn">Save</button>
 
-    </EditForm>
-}
+        </EditForm>
+    }
+</div>
 
 @code {
     private Inventory selectedInventory = null;

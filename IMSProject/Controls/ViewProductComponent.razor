@@ -3,7 +3,7 @@
 
 <div class="input-group mb-3">
     <input class="form-control form-control-lg" placeholder="Type Product Name To Search " @bind-value="ProductNameToSearch" @bind-value:event="oninput" />
-    <button class="input-group-text btn-success" type="button" @onclick="@(async()=> { await ViewProduct(); } )">View</button>
+    <button class="input-group-text" type="button" @onclick="@(async()=> { await ViewProduct(); } )">View</button>
 </div>
 <br />
 @if (this.DisplaySearchResult && _products != null && selectedProduct == null)

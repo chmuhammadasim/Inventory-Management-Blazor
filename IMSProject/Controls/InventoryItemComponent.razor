@@ -3,7 +3,7 @@
     <td>@inventory.InventoryName</td>
     <td>@inventory.Quantity</td>
     <td>@inventory.Price</td>
-    <td><button type="button" class="btn btn-light" @onclick="@(()=>EditInventoryData(inventory.InventoryId))">Edit</button></td>
+    <td><button type="button" class="btn" @onclick="@(()=>EditInventoryData(inventory.InventoryId))">Edit</button></td>
 </tr>
 @code {
     [Parameter]

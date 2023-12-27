@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "28iJmTIldgu6Ba/Sv9CbHcHwq0UKFgMByU5nRneeY9I=",
+  "Hash": "qR79L2PgIFuTqSAQP+SVA2IMCuLhwMhGWLpWJ3NtJhI=",
   "Source": "IMSProject",
   "BasePath": "_content/IMSProject",
   "Mode": "Default",
@@ -1193,6 +1193,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\boybr\\source\\repos\\IMSProject\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\IMSProject.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\boybr\\source\\repos\\IMSProject\\wwwroot\\bg.jpg",
+      "SourceId": "IMSProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\boybr\\source\\repos\\IMSProject\\wwwroot\\",
+      "BasePath": "_content/IMSProject",
+      "RelativePath": "bg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bg.jpg"
     },
     {
       "Identity": "C:\\Users\\boybr\\source\\repos\\IMSProject\\wwwroot\\css\\bootstrap\\bootstrap.min.css",

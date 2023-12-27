@@ -2,7 +2,7 @@
 @inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
 <div class="input-group ">
     <input class="form-control form-control-lg" type="text" placeholder="Type Inventory Name To Search " @bind-value="inventoryNameToSearch" @bind-value:event="oninput" />
-    <button class="input-group-text btn-success" type="button" @onclick="@(async()=> { await ViewInventories(); } )">View</button>
+    <button class="input-group-text" type="button" @onclick="@(async()=> { await ViewInventories(); } )">View</button>
 </div>
 <br />
 

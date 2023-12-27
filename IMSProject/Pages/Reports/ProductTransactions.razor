@@ -50,24 +50,24 @@
     </div>
     <div class="col">
         <label></label>
-        <button type="button" class="btn btn-primary form-control" @onclick="SearchProducts" >Search</button>
+        <button type="button" class="btn form-control" @onclick="SearchProducts" >Search</button>
     </div>
         <div class="col">
             <label></label>
-            <button type="button" class="btn btn-primary form-control" @onclick="PrintReport">Report</button>
+            <button type="button" class="btn form-control" @onclick="PrintReport">Report</button>
         </div>
 </div>
 @if (productTransaction != null)
 {
     <table class="table">
         <thead>
-            <tr>Date</tr>
-            <tr>Product</tr>
-            <tr>Activity</tr>
-            <tr>Quantity Before</tr>
-            <tr>Quantity After</tr>
-            <tr>Production #</tr>
-            <tr>SO #</tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Activity</th>
+            <th>Quantity Before</th>
+            <th>Quantity After</th>
+            <th>Production #</th>
+            <th>SO #</th>
         </thead>
         <tbody>
             @foreach (var pt in productTransaction)

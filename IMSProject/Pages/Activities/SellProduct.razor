@@ -3,7 +3,7 @@
 @inject ISellProductUseCase sellProductUseCase
 <ErrorMessageComponent ErrorMessage="@errorMessage"></ErrorMessageComponent>
 <h3>SellProduct</h3>
-
+<div class="backCustom">
 @if (sellViewModel != null)
 {
     <EditForm Model="sellViewModel" OnInvalidSubmit="OnInvalidSubmit">
@@ -23,10 +23,11 @@
             <label for="qyt">price</label>
             <InputNumber @bind-Value="sellViewModel.ProductionPrice" class="form-control " id="qyt" placeholder="Quantity To Produce" required />
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn">Save</button>
 
     </EditForm>
 }
+</div>
 @code {
     private SellViewModel sellViewModel = new SellViewModel();
     private Product selectedProduct;

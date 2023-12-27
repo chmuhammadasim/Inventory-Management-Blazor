@@ -15,7 +15,7 @@ namespace IMS.UserCases
         public async Task ExecteAsync(string poNumber, Inventory inventory, int quantity, string doneBy)
         {
             await this.inventoryTransactionRepository.PurchaseAsync(poNumber, inventory, quantity, inventory.Price, doneBy);
-            inventory.Quantity += quantity;
+            inventory.Quantity -= quantity;
             await this.inventoryRepository.UpdateInventoryAsync(inventory);
         }
     }

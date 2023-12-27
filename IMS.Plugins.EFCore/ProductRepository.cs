@@ -19,9 +19,10 @@ namespace IMS.Plugins.EFCore
 
         public async Task AddProductAsync(Product product)
         {
-            if (db.Product.Any(x => x.ProductName.Equals(product.ProductName, StringComparison.OrdinalIgnoreCase))) return;
-                this.db.Product.Add(product);
-            await this.db.SaveChangesAsync();
+            if (db.Product.Any(x => x.ProductName.ToLower() == product.ProductName.ToLower())) return;
+            db.Product.Add(product);
+            await db.SaveChangesAsync();
+
         }
 
         public async Task DeleteProductAsync(int productId)

@@ -59,11 +59,11 @@ label {
 
 
 @media print {
-    body * {
+    body {
         visibility :hidden;
     }
-    #printarea, #printarea {
-        visibility : visible
+    #printarea {
+        visibility : visible;
     }
     #printarea {
         position:absolute;

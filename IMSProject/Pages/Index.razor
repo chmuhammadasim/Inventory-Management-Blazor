@@ -1,7 +1,7 @@
 ﻿@page "/"
 
 <PageTitle>Khata(Hisab)</PageTitle>
-
+@inject IJSRuntime JSRuntime
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,18 +175,41 @@
     <section class="bg-gray-900 text-white">
         <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
             <div class="mx-auto max-w-3xl text-center">
-                <h1 class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                <h1 style="font-size:42px" class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
                     Welcome to
                     <span class="sm:block"> Khata webapp </span>
                 </h1>
 
                 <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus
-                    numquam ea!
+                    Khata App is used to oversee a shop's inventory, which includes manufacturing, ordering, storing, and selling procedures for goods in the marketplace. This involves overseeing the processing and storage of components, raw materials, and final goods.
                 </p>
             </div>
         </div>
     </section>
-
+    <div class="backCustom2" style="margin:10px;text-align:center">
+        <h3>Shop</h3>
+    </div>
+    <div id="map" style="height:500px;width:100%;"></div>
+    <script>
+        function initialize() {
+            var latlng = new google.maps.LatLng(33.7133683, 73.0242994);
+            var options = {
+                zoom: 18, center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map"), options);
+        }
+    </script>
 </body>
 </html>
+
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initialize", null);
+        }
+    }
+}

@@ -2,9 +2,10 @@
 @attribute [Authorize]
 @inject IAddProductUseCase AddProductUseCase
 @inject NavigationManager NavigationManager
-<h3>AddProduct</h3>
-<br />
-
+<div class="backCustom2" style="margin:10px;text-align:center">
+    <h3>Add Product</h3>
+</div>
+<div class="backCustom">
 @if (this.product != null)
 {
     <EditForm Model="product" OnValidSubmit="OnValidSubmit">
@@ -28,6 +29,7 @@
             <button type="submit" class="btn">Submit</button>
     </EditForm>
 }
+</div>
 @code {
     private Product? product;
     private ProductInventoriesComponent ProductInventoriesComponent;

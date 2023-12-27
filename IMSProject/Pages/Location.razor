@@ -1,0 +1,29 @@
+﻿@page "/map"
+
+@inject IJSRuntime JSRuntime
+
+<h1>Display Google Map</h1>
+<div id="map" style="height:500px;width:100%;">
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initialize", null);
+        }
+    }
+}
+
+
+<script>
+    function initialize() {
+        var latlng = new google.maps.LatLng(33.7133683, 73.0242994);
+        var options = {
+            zoom: 18, center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"), options);
+    }
+</script>

@@ -3,7 +3,10 @@
 @inject IViewInventoryByIdUseCase ViewInventoryByIdUseCase
 @inject IEditInventoryUseCase EditInventoryUseCase
 @inject NavigationManager NavigationManager
-<h3>Edit Inventory</h3>
+<div class="backCustom2" style="margin:10px;text-align:center">
+    <h3>Edit Inventory</h3>
+</div>
+<div class="backCustom">
 @if (this.inventory != null)
 {
     <EditForm Model="inventory" OnValidSubmit="OnValidSubmit">
@@ -24,7 +27,7 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </EditForm>
 }
-
+</div>
 @code {
 
     [Parameter]

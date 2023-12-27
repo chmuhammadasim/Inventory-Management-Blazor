@@ -3,7 +3,10 @@
 @inject IAddInventoryUseCase AddInventoryUseCase
 @inject NavigationManager NavigationManager
 
-<h3>Add Inventory</h3>
+<div class="backCustom2" style="margin:10px;text-align:center">
+    <h3>Add Inventory</h3>
+</div>
+<div class="backCustom">
 @if (inventory != null)
 {
     <EditForm Model="inventory" OnValidSubmit="OnValidSubmit">
@@ -24,6 +27,7 @@
         <button type="submit" class="btn">Save</button>
     </EditForm>
 }
+</div>
 @code {
     private Inventory? inventory;
     protected override void OnInitialized()

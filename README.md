@@ -1,4 +1,4 @@
-# Khata Inventory Management System
+# Khata (Inventory Management System)
 
 Welcome to the Khata Inventory Management System repository! Khata is a comprehensive inventory management system designed to facilitate CRUD operations and user authentication through login/signup functionalities.
 
